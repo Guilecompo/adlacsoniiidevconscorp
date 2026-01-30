@@ -1,3 +1,5 @@
+// DEPLOY TEST — dynamic nodemailer import only
+
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
