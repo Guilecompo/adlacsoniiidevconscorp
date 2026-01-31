@@ -155,6 +155,47 @@ export default function Home() {
       setIsSending(false);
     }
   };
+  const handleEmailClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const subject = encodeURIComponent(
+      "Adlacson Construction – Website Inquiry",
+    );
+    const body = encodeURIComponent(
+      `Date: ${new Date().toLocaleDateString("en-PH", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+
+        Name:
+        Email:
+        Purpose:
+
+        Message:
+
+
+        Thank you.
+
+        Best regards,`,
+    );
+
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(
+      navigator.userAgent,
+    );
+
+    if (isMobile) {
+      // 📱 Gmail app (or default mail app)
+      window.location.href = `mailto:adlacson3devconscorp.itdep@gmail.com?subject=${subject}&body=${body}`;
+    } else {
+      // 🖥 Gmail web in new tab
+      window.open(
+        `https://mail.google.com/mail/?view=cm&fs=1&to=adlacson3devconscorp.itdep@gmail.com&su=${subject}&body=${body}`,
+        "_blank",
+        "noopener,noreferrer",
+      );
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -747,32 +788,10 @@ export default function Home() {
                 </button>
               </form>
 
-              {/* Email Us Directly Button */}
-              <a
-                href={`https://mail.google.com/mail/?view=cm&fs=1&to=adlacson3devconscorp.itdep@gmail.com&su=${encodeURIComponent(
-                  "Adlacson Construction – Website Inquiry",
-                )}&body=${encodeURIComponent(
-                  `
-                  Date: ${new Date().toLocaleDateString("en-PH", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                  Name:
-                  Email:
-                  Purpose:
-
-                  Message:
-
-
-
-                  Thank you.
-
-                  Best regards,`,
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-3 rounded-2xl border border-slate-300 bg-white px-6 py-4 text-sm font-semibold text-gray-700 shadow-md transition-all duration-300 hover:bg-slate-50 hover:shadow-xl hover:-translate-y-0.5"
+              <button
+                type="button"
+                onClick={handleEmailClick}
+                className="group flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-300 bg-white px-6 py-4 text-sm font-semibold text-gray-700 shadow-md transition-all duration-300 hover:bg-slate-50 hover:shadow-xl hover:-translate-y-0.5"
               >
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-500 transition-transform duration-300 group-hover:-translate-y-1 group-hover:animate-bounce">
                   <Mail size={20} />
@@ -781,10 +800,10 @@ export default function Home() {
                 <span className="flex flex-col text-left leading-tight">
                   <span className="text-gray-900">Email Us Directly</span>
                   <span className="text-xs font-normal text-gray-500">
-                    Opens Gmail in a new tab
+                    Opens Gmail app on mobile · New tab on desktop
                   </span>
                 </span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
