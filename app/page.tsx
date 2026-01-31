@@ -357,8 +357,10 @@ export default function Home() {
       </section>
 
       {/* MAIN PROJECTS SECTION */}
-      <section className="relative w-full py-24  overflow-hidden bg-linear-to-b from-slate-50 via-white to-slate-100">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-size-[48px_48px]" />
+      <section className="relative w-full py-24 overflow-hidden bg-linear-to-b from-slate-50 via-white to-slate-100">
+        {/* BACKGROUND GRID — MUST NOT BLOCK CLICKS */}
+        <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-size-[48px_48px]" />
+
         {/* Section Header */}
         <div className="relative z-20 mx-auto mb-16 max-w-4xl px-6 text-center">
           <span className="mb-3 inline-block text-xs font-semibold tracking-widest text-blue-400 uppercase">
@@ -377,7 +379,7 @@ export default function Home() {
         </div>
 
         {/* Desktop & Tablet Grid */}
-        <div className="hidden md:grid mx-auto max-w-6xl grid-cols-2 gap-8 px-6 lg:grid-cols-3">
+        <div className="relative z-20 hidden md:grid mx-auto max-w-6xl grid-cols-2 gap-8 px-6 lg:grid-cols-3">
           {projects.map((project, index) => (
             <div
               key={index}
@@ -393,11 +395,10 @@ export default function Home() {
                 className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Gradient Overlay */}
-              {/* Subtle Engineering Grid Background */}
+              {/* Card Overlay Grid */}
               <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-size-[40px_40px] opacity-40" />
 
-              {/* Project Title */}
+              {/* Title */}
               <div className="absolute bottom-0 left-0 w-full p-5">
                 <h3 className="text-lg font-semibold text-white [text-shadow:-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,1px_1px_0_#000]">
                   {project.title}
@@ -408,7 +409,7 @@ export default function Home() {
         </div>
 
         {/* Mobile Carousel */}
-        <div className="md:hidden mx-auto mt-10 max-w-xl px-6">
+        <div className="relative z-20 md:hidden mx-auto mt-10 max-w-xl px-6">
           <Swiper
             modules={[Pagination]}
             pagination={{ clickable: true }}
@@ -442,17 +443,18 @@ export default function Home() {
           </Swiper>
         </div>
 
-        {/* CTA */}
-        <div className="mt-16 text-center">
+        {/* CTA — FORCE ABOVE EVERYTHING */}
+        <div className="relative z-30 mt-16 text-center">
           <button
             onClick={() => router.push("/projects")}
-            className="group rounded-lg bg-[#00349a] px-10 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 hover:shadow-xl"
+            className="group cursor-pointer rounded-lg bg-[#00349a] px-10 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 hover:shadow-xl"
           >
             View All Projects
           </button>
         </div>
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80">
+
+        {/* Scroll Indicator — NON INTERACTIVE */}
+        <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80">
           <div className="flex flex-col items-center gap-2 animate-bounce">
             <span className="text-xs tracking-widest uppercase text-primary">
               Scroll
