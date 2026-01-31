@@ -446,7 +446,7 @@ export default function Home() {
         <div className="mt-16 text-center">
           <button
             onClick={() => router.push("/projects")}
-            className="rounded-lg bg-[#00349a] px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:bg-blue-600 hover:scale-105 hover:shadow-xl"
+            className="mt-10 rounded-lg border border-blue-400/60 px-8 py-3 text-sm font-semibold text-blue-400 transition-all duration-300 hover:bg-blue-400 hover:text-black hover:shadow-xl hover:scale-105"
           >
             View All Projects
           </button>
