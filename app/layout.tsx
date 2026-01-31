@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "A.D. Lacson III | Developer and Construction Corporation",
   description: "A.D. Lacson III Developer and Construction Corporation",
+  manifest: "/manifest.json",
   icons: {
     icon: "/icon.png",
     shortcut: "/favicon.ico",
