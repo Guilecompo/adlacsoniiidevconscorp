@@ -360,7 +360,7 @@ export default function Home() {
       <section className="relative w-full py-24  overflow-hidden bg-linear-to-b from-slate-50 via-white to-slate-100">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-size-[48px_48px]" />
         {/* Section Header */}
-        <div className="relative z-10 mx-auto mb-16 max-w-4xl px-6 text-center">
+        <div className="relative z-20 mx-auto mb-16 max-w-4xl px-6 text-center">
           <span className="mb-3 inline-block text-xs font-semibold tracking-widest text-blue-400 uppercase">
             Portfolio
           </span>
